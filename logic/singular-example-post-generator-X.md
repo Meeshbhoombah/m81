@@ -1,8 +1,12 @@
 # sepgX
 ```JSON
 {
-    <GENERAL_LOGIC>,
-    <Example-POST>,
+    "example": "",
+    "instructions": {
+
+    }
 }
 ```
+
+## Instructions
 
