@@ -7,7 +7,7 @@
             "Brief": <Brand/README.md>,
         },
         "Topics-Covered": {
-            "Graph": "",
+            "Graph": "<SWITCH:>(##LinkedIn)(##X)</SWITCH>",
         },
         "All-Topics": {
             "Graph": "",
@@ -27,6 +27,9 @@
     "upgrading": {
         ...
     },
+    "instructions": {
+        ...
+    },
 }
 ```
 
@@ -44,6 +47,14 @@ m81
 This is the knowledge graph of all the topics covered in m81s content
 thus far. It is organized as a topic tree. Add to the tree when necessary,
 if/when an automation requisites the addition of new topics to the tree. 
+#### Graph
+> ![NOTE]
+> Should be the All Topics graph located at `Topics/README.md`
+
+### All Topics
+#### Graph
+> ![NOTE]
+> Should be the All Topics graph located at `Topics/README.md`
 
 ## Automations
 ### Processes
@@ -104,5 +115,7 @@ The contents of its file must conform to the syntax:
     "<SOME_SUBCATEGORY>"
 }
 ```
-```markdown
+
+## Instructions
+
 
