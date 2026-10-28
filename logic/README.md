@@ -9,14 +9,17 @@
         "Topics-Covered": {
             "Graph": "",
         },
-    }
+        "All-Topics": {
+            "Graph": "",
+        },
+    },
     <SWITCH>
-        <X>
-        "last-ten-X-posts": {},
-        </X>
-        <LinkedIn>
-        "last-week's-LinkedIn-posts": {},
-        </LinkedIn>
+    <X>
+    "last-ten-X-posts": {},
+    </X>
+    <LinkedIn>
+    "last-week's-LinkedIn-posts": {},
+    </LinkedIn>
     </SWITCH>
     "automations": {
         ...
@@ -32,8 +35,6 @@ This should always be set to timezone our potential customers are in.
 > ![CAUTION]
 > hardcoded value
 > EST
-
-
 
 ## General
 ### Brand
