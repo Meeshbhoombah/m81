@@ -1,4 +1,17 @@
 fn main() {
+
+    // TODO: Scheduled Postings
+    // Should randomly choose from the types of posts available
+    // - e.g.:
+    //      + Mimic all time high posts
+    //      + A notable person
+    //      + On a notable event
+    //      + etc.
+    // TODO: schedule a job to run every Sunday
+    // - Generation of 5 LinkedIn posts
+    // TODO: schedule a job to run every day
+    // - Generation of 3 X posts
+
     println!("Hello, world!");
     // TODO: read the README at logic/README.md
     // parse first JSON block as logic
@@ -7,4 +20,5 @@ fn main() {
     // logic
     // read in h3s, if a found header is followed by a paragraph text, read that
     // in and attach the label "info"
+    
 }
