@@ -32,7 +32,12 @@ if/when an automation requisites the addition of new topics to the tree.
 #### asat
 All Subtopics of a Topic
 <!-- TODO: file -->
-- Research a topic
+- Research a topic, comprehensively find all its subtopics
+
+### akiat
+All Key Ideas of a Topic
+- Get a list of all the key ideas of a topic, comprehensively explaining the 
+topic 
 
 #### sepgX
 Singular Example Post generation for X
