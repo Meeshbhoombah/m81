@@ -14,7 +14,6 @@ fn main() -> std::io::Result<()> {
     // TODO: schedule a job to run every day
     // - Generation of 3 X posts
 
-    println!("Hello, world!");
     // TODO: read the README at logic/README.md
     let e = fs::read_to_string("./logic/README.md")?;
     println!("{}", e);
