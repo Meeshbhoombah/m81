@@ -7,7 +7,7 @@
     "example": "<EXAMPLE_POST_CONTENT>",
     "topic": {
         "is": "<TOPIC>",
-        "ideas": {
+        "key-ideas": {
             ...
         }
     }
@@ -15,7 +15,7 @@
 ```
 
 ## Instructions
-Micmic the example post one-to-one for the topic
+Write a post for X. Micmic the example one-to-one, adjust it for the topic and
 
 ## Example
 > ![NOTE]
@@ -26,7 +26,7 @@ Micmic the example post one-to-one for the topic
 > ![NOTE]
 > Should be a singular phrase, word, or term
 
-### Ideas
+### Key Ideas
 > ![NOTE]
 > Should be a collected list of key ideas comprehensively covering the
 provided topic, end-to-end 
