@@ -8,30 +8,33 @@ fn main() -> std::io::Result<()> {
     //      + All topics
     //      + Visited topics on LinkedIn
     //      + Visited topics on X
-    // - For each keyword
-    //      + Comprehensively find all sub-topics, use the asoat automation 
-    //        (All Subtopics of a Topic)
-    //      + Update the graph in `Topics/README.md`
-    // - For each keyword
-    //      + Create a sub-directory in /topic
-    //      + Add a README.md for all ideas in the topic
-    //      + e.g.:
-    //          ```
-    //          Topics
-    //              Subtopic 1
-    //                  README.md (contains Subtopic 1's key ideas)
-    //                      Subtopic 4
-    //                      etc.
-    //              Subtopic 2
-    //              Subtopic 3
-    //          ```
-    //      + In the README.md for a Subtopic, add a title and all key ideas in
-    //        bullet form
-    //      + e.g.:
-    //          ```
-    //          # Subtopic 1
-    //          ## Key Ideas
-    //          ```
+    // - Check memory for all topics graph
+    //      + If new nodes in graph (i.e.: a new Subtopic)
+    //          * For each keyword (topic)
+    //              - Comprehensively find all sub-topics, use the asoat 
+    //              automation (All Subtopics of a Topic)
+    //              - Update the graph in `Topics/README.md`
+    //          * 
+    //      - For each keyword
+    //          + Create a sub-directory in /topic
+    //          + Add a README.md for all ideas in the topic
+    //          + e.g.:
+    //              ```
+    //              Topics
+    //                  Subtopic 1
+    //                      README.md (contains Subtopic 1's key ideas)
+    //                          Subtopic 4
+    //                          etc.
+    //                  Subtopic 2
+    //                  Subtopic 3
+    //              ```
+    //          + In the README.md for a Subtopic, add a title and all key ideas 
+    //          in bullet form
+    //          + e.g.:
+    //              ```
+    //              # Subtopic 1
+    //              ## Key Ideas
+    //              ```
     //
 
     // TODO: Scheduled Postings
