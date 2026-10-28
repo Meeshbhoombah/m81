@@ -45,6 +45,7 @@ fn main() -> std::io::Result<()> {
     // - Generation of 5 LinkedIn posts
     // TODO: schedule a job to run every day
     // - Generation of 3 X posts
+    //
 
     // TODO: read the README at logic/README.md
     let e = fs::read_to_string("./logic/README.md")?;
@@ -55,6 +56,7 @@ fn main() -> std::io::Result<()> {
     // logic
     // read in h3s, if a found header is followed by a paragraph text, read that
     // in and attach the label "info"
+    //
 
 
     Ok(())
