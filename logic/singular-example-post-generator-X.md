@@ -15,7 +15,7 @@
 ```
 
 ## Instructions
-Write a post for X. Micmic the example one-to-one, adjust it for the topic and
+Write a post for X. Micmic the example one-to-one. Adjust it to the topic.
 
 ## Example
 > ![NOTE]
