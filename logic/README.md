@@ -40,7 +40,7 @@ All Key Ideas of a Topic
 topic 
 
 #### sepgX
-Singular Example Post generation for X
+Singular Example Post generator X
 - Pick a post from Posts and generate another based off that Post
 
 #### ttgx
@@ -69,6 +69,9 @@ The contents of its file must conform to the syntax:
 ```markdown
 # <PROCESS_NAME>
 ```JSON
+{
+    "<SOME_SUBCATEGORY>"
+}
 ```
 ```markdown
 
