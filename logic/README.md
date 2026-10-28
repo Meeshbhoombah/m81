@@ -1,6 +1,7 @@
 # Logic
 ```JSON
 {
+    "timezone": "",
     "general": {
         "Brand": {
             "Brief": <Brand/README.md>,
@@ -9,8 +10,14 @@
             "Graph": "",
         },
     }
-    "last-ten-X-posts": {},
-    "last-week's-LinkedIn-posts": {},
+    <SWITCH>
+        <X>
+        "last-ten-X-posts": {},
+        </X>
+        <LinkedIn>
+        "last-week's-LinkedIn-posts": {},
+        </LinkedIn>
+    </SWITCH>
     "automations": {
         ...
     },
@@ -19,6 +26,15 @@
     },
 }
 ```
+
+## Timezone
+<!-- 
+This is the primary timezone to target, so we can optimize the times at which 
+posts go out.
+-->
+> ![CAUTION]
+> hardcoded value
+> EST
 
 ## General
 ### Brand
@@ -31,6 +47,18 @@ if/when an automation requisites the addition of new topics to the tree.
 
 ## Automations
 ### Processes
+#### wlpg
+Weekly LinkedIn Post Generation
+<!-- TODO: file -->
+> ![IMPORTANT]
+> Runs every Sunday
+
+####
+Daily X Post Generation
+<!-- TODO: file -->
+> ![IMPORTANT]
+> Runs every day
+
 #### asat
 All Subtopics of a Topic
 <!-- TODO: file -->
