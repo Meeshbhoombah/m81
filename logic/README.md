@@ -9,6 +9,8 @@
             "Graph": "",
         },
     }
+    "last-ten-X-posts": {},
+    "last-week's-LinkedIn-posts": {},
     "automations": {
         ...
     },
@@ -34,16 +36,17 @@ All Subtopics of a Topic
 <!-- TODO: file -->
 - Research a topic, comprehensively find all its subtopics
 
-### akiat
+### akioat
 All Key Ideas of a Topic
+<!-- TODO: file-->
 - Get a list of all the key ideas of a topic, comprehensively explaining the 
 topic 
 
-#### sepgX
-Singular Example Post generator X
+#### sepgfx
+Singular Example Post generation for X
 - Pick a post from Posts and generate another based off that Post
 
-#### ttgx
+#### ttgfx
 <!-- TODO: file -->
 Topic Thread generation for X
 - Generate a styled X thread
