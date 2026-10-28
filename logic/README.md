@@ -12,15 +12,16 @@
         "All-Topics": {
             "Graph": "",
         },
+        <SWITCH>
+        <X>
+        "last-ten-X-posts": {},
+        "x-voice-guide": "",
+        </X>
+        <LinkedIn>
+        "last-week's-LinkedIn-posts": {},
+        </LinkedIn>
+        </SWITCH>
     },
-    <SWITCH>
-    <X>
-    "last-ten-X-posts": {},
-    </X>
-    <LinkedIn>
-    "last-week's-LinkedIn-posts": {},
-    </LinkedIn>
-    </SWITCH>
     "automations": {
         ...
     },
@@ -81,13 +82,18 @@ All Key Ideas of a Topic
 - Get a list of all the key ideas of a topic, comprehensively explaining the 
 topic 
 
+#### wap
+Write a Post
+<!-- TODO: file -->
+- The primary writer of posts
+
 #### sepgfx
-Singular Example Post generation for X
+Singular Example Post Generation for X
 - Pick a post from Posts and generate another based off that Post
 
 #### ttgfx
 <!-- TODO: file -->
-Topic Thread generation for X
+Topic Thread Generation for X
 - Generate a styled X thread
 
 ## Upgrading
@@ -117,5 +123,5 @@ The contents of its file must conform to the syntax:
 ```
 
 ## Instructions
-
+Write a post based on the information provided to you in the other fields.
 
