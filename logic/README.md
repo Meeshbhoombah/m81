@@ -19,6 +19,7 @@
         </X>
         <LinkedIn>
         "last-week's-LinkedIn-posts": {},
+        "linkedin-voice-guide": "",
         </LinkedIn>
         </SWITCH>
     },
@@ -26,9 +27,6 @@
         ...
     },
     "upgrading": {
-        ...
-    },
-    "instructions": {
         ...
     },
 }
@@ -56,6 +54,20 @@ if/when an automation requisites the addition of new topics to the tree.
 #### Graph
 > ![NOTE]
 > Should be the All Topics graph located at `Topics/README.md`
+
+### Last Ten X Posts
+> ![NOTE]
+> Should be retrieved from redis
+
+### X Voice Guide
+<!-- TODO: Write Voice Guide -->
+
+### Last Week's LinkedIn Posts
+> ![NOTE]
+> Should be retrieved from redis
+
+### LinkedIn Voice Guide
+<!-- TODO: Write Voice Guide -->
 
 ## Automations
 ### Processes
@@ -121,7 +133,4 @@ The contents of its file must conform to the syntax:
     "<SOME_SUBCATEGORY>"
 }
 ```
-
-## Instructions
-Write a post based on the information provided to you in the other fields.
 
