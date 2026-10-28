@@ -28,13 +28,12 @@
 ```
 
 ## Timezone
-<!-- 
-This is the primary timezone to target, so we can optimize the times at which 
-posts go out.
--->
+This should always be set to timezone our potential customers are in.
 > ![CAUTION]
 > hardcoded value
 > EST
+
+
 
 ## General
 ### Brand
