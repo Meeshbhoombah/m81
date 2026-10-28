@@ -64,7 +64,7 @@ Weekly LinkedIn Post Generation
 > ![IMPORTANT]
 > Runs every Sunday
 
-####
+#### dxpg
 Daily X Post Generation
 <!-- TODO: file -->
 > ![IMPORTANT]
