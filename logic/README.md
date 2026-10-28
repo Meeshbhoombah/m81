@@ -29,6 +29,11 @@ if/when an automation requisites the addition of new topics to the tree.
 
 ## Automations
 ### Processes
+#### asat
+All Subtopics of a Topic
+<!-- TODO: file -->
+- Research a topic
+
 #### sepgX
 Singular Example Post generation for X
 - Pick a post from Posts and generate another based off that Post
@@ -39,7 +44,7 @@ Topic Thread generation for X
 - Generate a styled X thread
 
 ## Upgrading
-### Adding to the Knowledge Graph
+### Adding to Topics Covered
 ### Writing a New Engine Subsystem
 Current subsystems include:
 - General
