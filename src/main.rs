@@ -2,6 +2,17 @@ use std::fs;
 
 fn main() -> std::io::Result<()> {
 
+    /*
+    TODO: add open crate
+    - make localhost:3000 URL from config (for a change if defaults are different);
+    - open localhost:3000 in the default browser with the `open` crate
+    */
+
+    /*
+    server.addr
+    open::that(server.addr)?;
+    */
+
     // TODO: Generate graph
     // Read `Topic/README.md`
     // - Should contain:
