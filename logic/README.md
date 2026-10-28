@@ -70,7 +70,7 @@ Daily X Post Generation
 > ![IMPORTANT]
 > Runs every day
 
-#### asat
+#### asoat
 All Subtopics of a Topic
 <!-- TODO: file -->
 - Research a topic, comprehensively find all its subtopics
