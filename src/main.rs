@@ -1,6 +1,18 @@
+use std::io::{self, BufRead};
 use std::fs;
 
 fn main() -> std::io::Result<()> {
+
+    loop {
+        println!("Type something:");
+        let stdin = io::stdin();
+        for line in stdin.lock().lines() {
+            if let Ok(input) = line {
+                println!("You typed: {}", input);
+            }
+        }
+
+    }
 
     /*
     TODO: add open crate
