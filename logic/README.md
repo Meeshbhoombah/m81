@@ -7,12 +7,22 @@
             "Brief": <Brand/README.md>,
         },
         "Topics-Covered": {
-            "Graph": "<SWITCH:>(##LinkedIn)(##X)</SWITCH>",
+            "Graph": "
+                <SWITCH: ="platform">
+                <Topics/README.md/##Covered>
+                <X>
+                <Topics/README.md/###X>
+                </X>
+                <LinkedIn>
+                <Topics/README.md/###LinkedIn>
+                </LinkedIn>
+                </SWITCH>
+            ",
         },
         "All-Topics": {
             "Graph": "",
         },
-        <SWITCH>
+        <SWITCH ="platform">
         <X>
         "last-ten-X-posts": {},
         "x-voice-guide": "",
@@ -21,6 +31,33 @@
         "last-week's-LinkedIn-posts": {},
         "linkedin-voice-guide": "",
         </LinkedIn>
+        </SWITCH>
+        <SWITCH ="funnel">
+        "funnel": {
+            "full": <Brand/Marketing/Funnel/README.md>
+            <SWITCH = "stage"
+            "stage": {
+                <Awareness>
+                "Awareness": <Brand/Marketing/Funnel/Awareness/README.md>
+                </Awareness>
+                <Interest> 
+                "Interest": <Brand/Marketing/Funnel/Interest/README.md>
+                </Interest>
+                <Consideration>
+                "Consideration": <Brand/Marketing/Funnel/Consideration/README.md>
+                </Consideration>
+                <Conversion>
+                "Conversion: <Brand/Marketing/Funnel/Conversion/README.md>
+                </Conversion>
+                <Retention>
+                "Retention": <Brand/Marketing/Funnel/Retention/README.md>
+                </Retention>
+                <Advocacy>
+                "Advocacy": <Brand/Marketing/Funnel/Advocacy/README.md>
+                </Advocacy>
+            },
+            <SWITCH = "stage">
+        },
         </SWITCH>
     },
     "automations": {
@@ -39,6 +76,11 @@ This should always be set to timezone our potential customers are in.
 > EST
 
 ## General
+Take all of this into consideration when writing your post.
+
+If a stage of the marketing funnel has been specified, target a customer at 
+that step when writing your content.
+
 ### Brand
 m81
 
@@ -46,6 +88,7 @@ m81
 This is the knowledge graph of all the topics covered in m81s content
 thus far. It is organized as a topic tree. Add to the tree when necessary,
 if/when an automation requisites the addition of new topics to the tree. 
+
 #### Graph
 > ![NOTE]
 > Should be the All Topics graph located at `Topics/README.md`
@@ -68,6 +111,12 @@ if/when an automation requisites the addition of new topics to the tree.
 
 ### LinkedIn Voice Guide
 <!-- TODO: Write Voice Guide -->
+
+### Funnel
+The general marketing funnel.
+
+#### Awareness
+This is the initial stage of the funnel, it is where
 
 ## Automations
 ### Processes

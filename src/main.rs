@@ -45,7 +45,17 @@ fn main() -> std::io::Result<()> {
     //                  # Subtopic 1
     //                  ## Key Ideas
     //                  ```
-    //
+
+    /*
+    TODO: Target a stage in the general markeing funnel, or have the engine
+    take the funnel into consideration.
+    - Awareness
+    - Interest
+    - Consideration
+    - Conversion
+    - Retention
+    - Advocacy
+    */
 
     // TODO: Scheduled Postings
     // Should randomly choose from the types of posts available
