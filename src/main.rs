@@ -1,17 +1,28 @@
-use std::io::{self, BufRead};
 use std::fs;
+use std::io::{self, BufRead, Write};
 
 fn main() -> std::io::Result<()> {
+    let stdin = io::stdin();
+    let mut handle = stdin.lock();
+    let mut buffer = String::new();
 
     loop {
-        println!("Type something:");
-        let stdin = io::stdin();
-        for line in stdin.lock().lines() {
-            if let Ok(input) = line {
-                println!("You typed: {}", input);
-            }
+        // \x1b[44m\x1b[37m sets colors.
+        // \x1b[K clears/fills the rest of the line with the blue background.
+        print!("\x1b[44m\x1b[37m\x1b[K> ");
+        io::stdout().flush()?;
+
+        buffer.clear();
+        if handle.read_line(&mut buffer)? == 0 {
+            break;
         }
 
+        // Reset the background before printing the output
+        print!("\x1b[0m");
+        io::stdout().flush()?;
+
+        let input = buffer.trim_end();
+        println!("You typed: {}", input);
     }
 
     /*
@@ -34,7 +45,7 @@ fn main() -> std::io::Result<()> {
     // - Check memory for all topics graph
     //      + If new nodes in graph (i.e.: a new Subtopic)
     //          * For each keyword (topic)
-    //              - Comprehensively find all sub-topics, use the asoat 
+    //              - Comprehensively find all sub-topics, use the asoat
     //              automation (All Subtopics of a Topic)
     //              - Update the graph in `Topics/README.md`
     //          * For each keyword
@@ -50,7 +61,7 @@ fn main() -> std::io::Result<()> {
     //                      Subtopic 2
     //                      Subtopic 3
     //                  ```
-    //              - In the README.md for a Subtopic, add a title and all key 
+    //              - In the README.md for a Subtopic, add a title and all key
     //              ideas in bullet form
     //              - e.g.:
     //                  ```
@@ -87,13 +98,11 @@ fn main() -> std::io::Result<()> {
     println!("{}", e);
     // parse first JSON block as logic
     // read in lowercased h2s, ensure they match with the logic in the JSON, write
-    // an error to the frontend stating that theres a mismatch in the engine 
+    // an error to the frontend stating that theres a mismatch in the engine
     // logic
     // read in h3s, if a found header is followed by a paragraph text, read that
     // in and attach the label "info"
     //
 
-
     Ok(())
-    
 }
