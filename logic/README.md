@@ -163,6 +163,10 @@ Topic Thread Generation for X
 - Generate a styled X thread
 
 ## Upgrading
+These are the upgrades you can make to the enginer. If you think an upgrade is
+necessary, include it in your response. You may only use the following, 
+restrict your system to only the upgrades you can make:
+
 ### Adding to Topics Covered
 ### Writing a New Engine Subsystem
 Current subsystems include:
