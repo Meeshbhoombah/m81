@@ -79,7 +79,12 @@ This should always be set to timezone our potential customers are in.
 Take all of this into consideration when writing your post.
 
 If a stage of the marketing funnel has been specified, target a customer at 
-that step when writing your content.
+that step when writing content. Write with specificity.
+
+Everything you write should be from what makes us different, and be a focused
+representation of how we are different. Emphasis on the sections in `Brand` 
+marked `Differentiation`. Let this guide content. Do not liken our content to
+other customers.
 
 ### Brand
 m81
