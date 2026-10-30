@@ -1,4 +1,9 @@
 # Brand
+<!-- TODO: keep guidelines? -->
+## Guidelines
+### X content
+### LinkedIn
+
 ## Offerings
 Full end-to-end Reddit Marketing (organic)
 + Posting
