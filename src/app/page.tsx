@@ -1,6 +1,3 @@
-import * as fs from "fs";
-import * as path from "path";
-
 import { Suspense } from "react";
 
 import Counter from "./components/counter";
