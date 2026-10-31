@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101010;
+  color: #f4f1eb;
+  font-family: system-ui, sans-serif;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+header {
+  margin-bottom: 4rem;
+}
+
+h1 {
+  font-size: 4rem;
+  letter-spacing: -0.08em;
+}
+
+section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  border: 1px solid #333;
+  border-radius: 12px;
+}
+
+button {
+  padding: 0.7rem 1rem;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background: #252525;
+  color: white;
+  cursor: pointer;
+}
+
+article {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #202020;
+  border-radius: 8px;
+}
+
+p {
+  color: #aaa69e;
+}
