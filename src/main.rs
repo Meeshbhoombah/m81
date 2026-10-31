@@ -62,6 +62,20 @@ fn main() -> std::io::Result<()> {
         }
     }
 
+    /*
+    TODO: check if day is Sunday, check if today's date has been added to 
+    Content/README.md/### Linkedin
+        if not:
+            generate 5 new posts
+        if so:
+            do nothing
+    TODO: check if today's date has been added to Content/README.md/### X,
+        if not:
+            generate 3 new posts
+        if so:
+            do nothing
+    */
+
     loop {
         // \x1b[44m\x1b[37m sets colors.
         // \x1b[K clears/fills the rest of the line with the blue background.
