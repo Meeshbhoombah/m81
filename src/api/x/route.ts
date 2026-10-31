@@ -37,12 +37,8 @@ export async function GET() {
   );
   */
 
- return NextResponse.json(
-
-    {
-      text: globalThis.engineText,
-      "status": 200
-    } 
- )
- 
+  return NextResponse.json({
+    text: globalThis.engineText,
+    status: 200,
+  });
 }
