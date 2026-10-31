@@ -1,7 +1,21 @@
-use std::fs;
-use std::io::{self, BufRead, Write};
+use std::{
+    fs,
+    io::{
+        self,
+        BufRead,
+        Write
+    },
+    error::Error,
+    path::PathBuf
+};
 
-fn main() -> std::io::Result<()> {
+use axum::{Router, routing::get};
+use tokio::net::TcpListener;
+use tower_http::services::ServeDir;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn Error>> {
+
     let stdin = io::stdin();
     let mut handle = stdin.lock();
     let mut buffer = String::new();
@@ -77,11 +91,28 @@ fn main() -> std::io::Result<()> {
     TODO: check if today's date has been added to Content/README.md/### X
         if not:
             (generate 3 new posts)
-            activate the engine's SWITCH ="platform": X 
+            activate the engine's SWITCH ="platform": X
             call Argon 3x
         if so:
             do nothing
     */
+
+    let web_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("web");
+
+    let app: Router = Router::new()
+        .route("/health", get(|| async { "ok" }))
+        .fallback_service(
+            ServeDir::new(web_dir)
+                .append_index_html_on_directories(true)
+        );
+
+    let address = "127.0.0.1:3000";
+    let listener = TcpListener::bind(address).await?;
+    println!("m81 is serving http://{address}");
+
+    axum::serve(listener, app).await?;
+
 
     loop {
         // \x1b[44m\x1b[37m sets colors.
