@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
 import { Suspense } from "react";
 
@@ -7,22 +7,17 @@ import Counter from "./components/counter";
 import ClientPanel from "./components/client-panel";
 import ServerReport from "./components/server-report";
 
-
 export const dynamic = "force-dynamic";
 
-
-
-
 export default function Page() {
-
   const filePath = "../logic/README.md";
 
   try {
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const fileContent = fs.readFileSync(filePath, "utf-8");
     console.log(fileContent);
   } catch (error) {
-    console.error('Failed to read file:', error);
-    return 'Error loading file content.';
+    console.error("Failed to read file:", error);
+    return "Error loading file content.";
   }
 
   return (
@@ -40,14 +35,11 @@ export default function Page() {
       <section>
         <h2>2. Client Component containing server-rendered content</h2>
         <ClientPanel>
-          <Suspense
-            fallback={<p>Loading server report...</p>}
-          >
+          <Suspense fallback={<p>Loading server report...</p>}>
             <ServerReport />
           </Suspense>
         </ClientPanel>
       </section>
     </main>
   );
-
 }

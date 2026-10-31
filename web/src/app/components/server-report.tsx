@@ -8,13 +8,9 @@ export default async function ServerReport() {
     <article>
       <h3>Server-generated report</h3>
 
-      <p>
-        This component executed on the server.
-      </p>
+      <p>This component executed on the server.</p>
 
-      <p>
-        Generated at: {generatedAt}
-      </p>
+      <p>Generated at: {generatedAt}</p>
     </article>
   );
 }

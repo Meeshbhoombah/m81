@@ -1,32 +1,31 @@
 :root {
-    color-scheme: dark;
-    font-family: system-ui, sans-serif;
-    background: #101010;
-    color: #f4f1eb;
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  background: #101010;
+  color: #f4f1eb;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    min-height: 100vh;
-    margin: 0;
-    display: grid;
-    place-items: center;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
 }
 
 main {
-    text-align: center;
+  text-align: center;
 }
 
 h1 {
-    font-size: 5rem;
-    letter-spacing: -0.08em;
-    margin: 0;
+  font-size: 5rem;
+  letter-spacing: -0.08em;
+  margin: 0;
 }
 
 p {
-    color: #aaa69e;
+  color: #aaa69e;
 }
-

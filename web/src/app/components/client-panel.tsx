@@ -6,9 +6,7 @@ interface ClientPanelProps {
   children: ReactNode;
 }
 
-export default function ClientPanel({
-  children,
-}: ClientPanelProps) {
+export default function ClientPanel({ children }: ClientPanelProps) {
   const [open, setOpen] = useState(true);
 
   return (
@@ -17,11 +15,7 @@ export default function ClientPanel({
         {open ? "Hide content" : "Show content"}
       </button>
 
-      {open && (
-        <div>
-          {children}
-        </div>
-      )}
+      {open && <div>{children}</div>}
     </div>
   );
 }
