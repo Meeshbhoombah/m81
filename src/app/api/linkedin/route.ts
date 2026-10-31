@@ -1,3 +1,4 @@
+import { TEST } from "@/engine";
 import { NextResponse } from "next/server";
 
 // import { Client } from "./api/google";
@@ -19,6 +20,7 @@ async function generateLinkedInPost(engine: Engine) {
 }
 
 export async function GET() {
+  /*
   // TODO: have this create the engine, randomly choosing 1/10, where in 1/10
   // is with the funnel, 9/10 is without the funnel
   const engine = engine("LinkedIn");
@@ -28,6 +30,7 @@ export async function GET() {
   for (let i = 0; engine.count(); i++) {
     data += generateLinkedInPost(engine);
   }
+  */
 
   /*
   return NextResponse.json(
@@ -37,4 +40,10 @@ export async function GET() {
     }
   );
   */
+
+  return NextResponse.json({
+    text: globalThis.testText,
+    status: 200,
+  });
+
 }

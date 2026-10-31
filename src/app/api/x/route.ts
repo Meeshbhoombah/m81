@@ -43,4 +43,5 @@ export async function GET() {
     text: globalThis.engineText,
     status: 200,
   });
+
 }

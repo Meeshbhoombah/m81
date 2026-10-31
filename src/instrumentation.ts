@@ -1,3 +1,4 @@
+import { TEST } from "@/engine";
 import * as fs from "fs/promises";
 
 export async function register() {
@@ -9,6 +10,7 @@ export async function register() {
     });
 
     globalThis.engineText = rawEngineLogic;
+    globalThis.testText = TEST;
   } catch (error: any) {
     console.error("Error reading file:", error);
   }
