@@ -10,16 +10,6 @@ import ServerReport from "./components/server-report";
 export const dynamic = "force-dynamic";
 
 export default function Page() {
-  const filePath = "logic/README.md";
-
-  try {
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-    console.log(fileContent);
-  } catch (error) {
-    console.error("Failed to read file:", error);
-    return "Error loading file content.";
-  }
-
   return (
     <main>
       <header>
