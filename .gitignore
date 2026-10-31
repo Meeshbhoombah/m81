@@ -21,8 +21,8 @@ yarn-debug.log*
 bun-debug.log*
 
 # TypeScript
-/web/next-env.d.ts
-/web/tsconfig.tsbuildinfo
+next-env.d.ts
+/tsconfig.tsbuildinfo
 
 # OS / Editor
 .DS_Store
