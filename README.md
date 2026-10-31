@@ -7,7 +7,8 @@ cargo watch -w src -x run
 ### Development
 #### Prerequisites
 ##### MacOS
-##### .git
 ##### Homebrew
 ##### Rust
+##### .git
+##### `tree`
 
