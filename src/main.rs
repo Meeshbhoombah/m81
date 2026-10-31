@@ -63,15 +63,22 @@ fn main() -> std::io::Result<()> {
     }
 
     /*
-    TODO: check if day is Sunday, check if today's date has been added to 
-    Content/README.md/### Linkedin
-        if not:
-            generate 5 new posts
+    TODO: check if day is Sunday
         if so:
-            do nothing
-    TODO: check if today's date has been added to Content/README.md/### X,
+            check if today's date has been added to <Content/README.md/### Linkedin>
+                if not:
+                    (generate 5 posts)
+                    activate the engine's SWITCH ="platform": LinkedIn
+                    call Argon 5x
+                if so:
+                    do nothing
         if not:
-            generate 3 new posts
+            do nothing
+    TODO: check if today's date has been added to Content/README.md/### X
+        if not:
+            (generate 3 new posts)
+            activate the engine's SWITCH ="platform": X 
+            call Argon 3x
         if so:
             do nothing
     */
