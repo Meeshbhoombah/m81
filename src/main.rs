@@ -39,6 +39,30 @@ fn main() -> std::io::Result<()> {
 
     println!("{}", m81);
 
+    // TODO: read the README at logic/README.md
+    let engine = fs::read_to_string("./logic/README.md")?;
+    // println!("{}", e);
+    // parse first JSON block as logic
+    // read in lowercased h2s, ensure they match with the logic in the JSON, write
+    // an error to the frontend stating that theres a mismatch in the engine
+    // logic
+    // read in h3s, if a found header is followed by a paragraph text, read that
+    // in and attach the label "info"
+    
+    if let Some(json_start) = engine.find("```JSON") {
+        // Start searching for the closing ticks AFTER the opening marker
+        let search_offset = json_start + "```JSON".len();
+
+        if let Some(relative_end) = engine[search_offset..].find("```") {
+            // Calculate the absolute position in the original string
+            let json_end = search_offset + relative_end;
+            
+            // Extract the exact inner JSON segment
+            let json_content = &engine[search_offset..json_end];
+            // println!("Found JSON block:\n{}", json_content.trim());
+        }
+    }
+
     loop {
         // \x1b[44m\x1b[37m sets colors.
         // \x1b[K clears/fills the rest of the line with the blue background.
@@ -126,16 +150,6 @@ fn main() -> std::io::Result<()> {
     // - Generation of 3 X posts
     //
 
-    // TODO: read the README at logic/README.md
-    let e = fs::read_to_string("./logic/README.md")?;
-    println!("{}", e);
-    // parse first JSON block as logic
-    // read in lowercased h2s, ensure they match with the logic in the JSON, write
-    // an error to the frontend stating that theres a mismatch in the engine
-    // logic
-    // read in h3s, if a found header is followed by a paragraph text, read that
-    // in and attach the label "info"
-    //
 
     Ok(())
 }
