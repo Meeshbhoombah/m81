@@ -1,21 +1,21 @@
-use std::{
-    fs,
-    io::{
-        self,
-        BufRead,
-        Write
-    },
-    error::Error,
-    path::PathBuf
-};
-
 use axum::{Router, routing::get};
+use axum_reverse_proxy::ReverseProxy;
+use std::{
+    error::Error,
+    fs,
+    io::{self, BufRead, Write},
+    net::SocketAddr,
+    path::PathBuf,
+};
 use tokio::net::TcpListener;
-use tower_http::services::ServeDir;
+// use tower_http::services::ServeDir;
+
+async fn health() -> &'static str {
+    "ok"
+}
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-
     let stdin = io::stdin();
     let mut handle = stdin.lock();
     let mut buffer = String::new();
@@ -97,6 +97,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
             do nothing
     */
 
+    /*
     let web_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("web");
 
@@ -109,10 +110,26 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     let address = "127.0.0.1:3000";
     let listener = TcpListener::bind(address).await?;
-    println!("m81 is serving http://{address}");
+    println!("      m81 is serving http://{address}");
 
     axum::serve(listener, app).await?;
+    */
 
+    let next = ReverseProxy::new("/", "http://127.0.0.1:3001");
+
+    let app: Router = Router::new().route("/api/health", get(health)).merge(next);
+
+    let address = SocketAddr::from(([127, 0, 0, 1], 3000));
+
+    let listener = TcpListener::bind(address).await?;
+
+    println!("m81 listening on http://{address}");
+
+    axum::serve(
+        listener,
+        app.into_make_service_with_connect_info::<SocketAddr>(),
+    )
+    .await?;
 
     loop {
         // \x1b[44m\x1b[37m sets colors.
