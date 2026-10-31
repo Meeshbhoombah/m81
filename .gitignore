@@ -1,17 +1,13 @@
-# Rust
-/target/
-**/*.rs.bk
-
 # Next.js
-/web/.next/
-/web/out/
-/web/build/
+.next/
+out/
+build/
 
 # Node / Bun
-/web/node_modules/
-/web/.npm/
-/web/.yarn/
-/web/.pnp.*
+node_modules/
+.npm/
+.yarn/
+.pnp.*
 
 # Environment variables
 .env
