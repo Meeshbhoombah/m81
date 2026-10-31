@@ -1,6 +1,6 @@
 # Funnel
-Apply one of Robert Cialdini's principles of social influence. Try to apply
-them to your post.
+Apply one of Robert Cialdini's principles of social influence to your post if
+it improves your post.
 
 They are...
 - Reciprocity
@@ -18,10 +18,11 @@ They are...
 - Unity
     + Demonstrate shared values, identity, or understanding where authentic
 
-Important: These are not buttons to push mechanically. A testimonial is not 
-persuasive merely because it exists; it is persuasive when the prospect sees 
-someone sufficiently similar to themselves achieving a relevant result. Scarcity
-is not a license to manufacture fake deadlines.
+Important: These are not buttons to push mechanically. e.g.:
+- A testimonial is not persuasive merely because it exists
+- Persuasive when the prospect sees someone sufficiently similar to themselves 
+achieving a relevant result
+- Scarcity is not a license to manufacture fake deadlines
 
 If you use one of Robert Cialdini's princples of social influence, denote which
 principle you applied with:
