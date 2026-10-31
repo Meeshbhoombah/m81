@@ -1,9 +1,16 @@
 # m81
 ## Getting Started
-### Running the Engine
+### Production
+First,
 ```
-cargo watch -w src -x run
+bun run build
 ```
+
+Then,
+```
+bun run start
+```
+
 ### Development
 #### Prerequisites
 ##### MacOS
@@ -11,4 +18,18 @@ cargo watch -w src -x run
 ##### Rust
 ##### .git
 ##### `tree`
+#### Installation
+```bash
+bun install
+```
+
+#### Building
+```bash
+bun run dev
+```
+
+Ocasionally, use:
+```bash
+bun run format
+```
 
