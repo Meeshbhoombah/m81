@@ -1,9 +1,5 @@
 class Engine {
+  private text = "";
 
-  let text = "";  
-
-  constructor() {
-  }
-
+  constructor() {}
 }
-
