@@ -11,6 +11,7 @@ export async function register() {
         encoding: "utf8" 
       }
     );
+    globalThis.engineText = rawEngineLogic;
   } catch (error: any) {
     console.error("Error reading file:", error);
   }
