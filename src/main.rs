@@ -8,7 +8,6 @@ fn main() -> std::io::Result<()> {
 
     println!("\n");
 
-
     let m81 = r#"
         _________________________/\\\\\\\\\_________/\\\_        
          _______________________/\\\///////\\\___/\\\\\\\_       
@@ -48,7 +47,7 @@ fn main() -> std::io::Result<()> {
     // logic
     // read in h3s, if a found header is followed by a paragraph text, read that
     // in and attach the label "info"
-    
+
     if let Some(json_start) = engine.find("```JSON") {
         // Start searching for the closing ticks AFTER the opening marker
         let search_offset = json_start + "```JSON".len();
@@ -56,7 +55,7 @@ fn main() -> std::io::Result<()> {
         if let Some(relative_end) = engine[search_offset..].find("```") {
             // Calculate the absolute position in the original string
             let json_end = search_offset + relative_end;
-            
+
             // Extract the exact inner JSON segment
             let json_content = &engine[search_offset..json_end];
             // println!("Found JSON block:\n{}", json_content.trim());
@@ -149,7 +148,6 @@ fn main() -> std::io::Result<()> {
     // TODO: schedule a job to run every day
     // - Generation of 3 X posts
     //
-
 
     Ok(())
 }
