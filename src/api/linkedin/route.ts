@@ -26,6 +26,7 @@ export async function GET() {
   // is with the funnel, 9/10 is without the funnel
   const engine = engine("LinkedIn");
   // TODO: check if day is Sunday
+  // check if posts have been made today
   let data: String;
   for (let i = 0; engine.count(); i++) {
     data += generateLinkedInPost(engine);
