@@ -1,5 +1,7 @@
 # Brand
-<!-- TODO: keep guidelines? -->
+## Vision
+To be the world's choice for Search Everywhere Marketing.
+
 ## Offerings
 Full end-to-end Reddit Marketing (organic)
 + Posting
@@ -13,6 +15,7 @@ m81 studio: Reddit Monitoring Tool
 ## Differentiation
 
 ## Guidelines
+<!-- TODO: keep guidelines? -->
 ### X content
 ### LinkedIn
 
