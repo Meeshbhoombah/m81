@@ -1,9 +1,5 @@
 # Brand
 <!-- TODO: keep guidelines? -->
-## Guidelines
-### X content
-### LinkedIn
-
 ## Offerings
 Full end-to-end Reddit Marketing (organic)
 + Posting
@@ -15,6 +11,10 @@ End-to-End SEO
 m81 studio: Reddit Monitoring Tool
 
 ## Differentiation
+
+## Guidelines
+### X content
+### LinkedIn
 
 ## Customers
 ### DTC Brands
