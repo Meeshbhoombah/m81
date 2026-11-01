@@ -1,7 +1,6 @@
 # Logic
 ```JSON
 {
-    "timezone": "",
     "general": {
         "Brand": {
             "Brief": <Brand/README.md>,
@@ -68,12 +67,6 @@
     },
 }
 ```
-
-## Timezone
-This should always be set to timezone our potential customers are in.
-> ![CAUTION]
-> hardcoded value
-> EST
 
 ## General
 Take all of this into consideration when writing your post.
