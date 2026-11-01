@@ -139,8 +139,8 @@ Singular Example Post Generation for X
 - Pick a post from Posts and generate another based off that Post
 
 #### ttgfx
-<!-- TODO: file -->
 Topic Thread Generation for X
+<!-- TODO: file -->
 - Generate a styled X thread
 
 ## Upgrading
