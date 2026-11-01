@@ -3,30 +3,14 @@
 import "server-only";
 
 import { readFile } from "node:fs/promises";
-import { isAbsolute, relative, resolve } from "node:path";
-
-enum Service {
-  X = "X",
-  LinkedIn = "LinkedIn",
-}
-
-enum Stage {
-  Awareness = "Awareness",
-  Interest = "Interest",
-  Consideration = "Consideration",
-  Conversion = "Conversion",
-  Retention = "Retention",
-  Advocacy = "Advocacy",
-}
+import { isAbsolute, relative, resolve, sep } from "node:path";
 
 const FILE_REFERENCE = /<([^<>]*?\.md)(?:\/(#{1,6}[^<>/\r\n]*))?>/g;
 
 export class Engine {
-  private readonly logic: string;
-
-  private constructor(logic: string) {
-    this.logic = logic;
-  }
+  private constructor(
+    private readonly logic: string,
+  ) {}
 
   public static async create(
     rawEngineLogic: string,
@@ -63,22 +47,19 @@ export class Engine {
       const filePath = resolve(rootDirectory, relativePath);
       const pathFromRoot = relative(rootDirectory, filePath);
 
-      // Prevent references from escaping the project directory.
       if (
         pathFromRoot === ".." ||
-        pathFromRoot.startsWith(`..${process.platform === "win32" ? "\\" : "/"}`) ||
+        pathFromRoot.startsWith(`..${sep}`) ||
         isAbsolute(pathFromRoot)
       ) {
-        throw new Error(`File reference escapes project root: ${relativePath}`);
+        throw new Error(
+          `File reference escapes project root: ${relativePath}`,
+        );
       }
 
-      // Prevent circular references.
       if (referenceStack.includes(filePath)) {
         throw new Error(
-          `Circular file reference detected: ${[
-            ...referenceStack,
-            filePath,
-          ].join(" -> ")}`,
+          `Circular file reference detected: ${relativePath}`,
         );
       }
 
@@ -88,31 +69,63 @@ export class Engine {
         fileContents = await readFile(filePath, "utf8");
       } catch (error) {
         throw new Error(
-          `Unable to read referenced file "${relativePath}": ${
+          `Unable to read "${relativePath}": ${
             error instanceof Error ? error.message : String(error)
           }`,
         );
       }
 
-      // If a heading was specified, include only that section.
       if (heading) {
         fileContents = Engine.extractHeading(fileContents, heading);
       }
 
-      // Expand any file references inside the included file.
+      // Resolve references inside the included file.
       const expandedContents = await Engine.expandReferences(
         fileContents,
         rootDirectory,
         [...referenceStack, filePath],
       );
 
-      result += expandedContents;
+      // Determine whether the reference is already inside a string.
+      const insideString = Engine.isInsideString(text, index);
+
+      // Escape the contents so they can safely exist inside a string.
+      const escapedContents = insideString
+        ? JSON.stringify(expandedContents).slice(1, -1)
+        : JSON.stringify(expandedContents);
+
+      result += escapedContents;
       cursor = index + reference.length;
     }
 
     result += text.slice(cursor);
 
     return result;
+  }
+
+  private static isInsideString(text: string, index: number): boolean {
+    let insideString = false;
+    let escaped = false;
+
+    for (let i = 0; i < index; i++) {
+      const character = text[i];
+
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+
+      if (character === "\\") {
+        escaped = true;
+        continue;
+      }
+
+      if (character === '"') {
+        insideString = !insideString;
+      }
+    }
+
+    return insideString;
   }
 
   private static extractHeading(
@@ -131,7 +144,6 @@ export class Engine {
       .toLowerCase();
 
     const lines = markdown.split(/\r?\n/);
-
     const headingPattern = /^(#{1,6})\s+(.+?)\s*#*\s*$/;
 
     const startIndex = lines.findIndex((line) => {
@@ -164,13 +176,4 @@ export class Engine {
   public getLogic(): string {
     return this.logic;
   }
-
-  public getLinkedIn(): string {
-    return this.logic;
-  }
-
-  public getX(): string {
-    return this.logic;
-  }
-
 }
