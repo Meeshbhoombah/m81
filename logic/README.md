@@ -85,7 +85,14 @@ m81
 ### Topics Covered
 This is the knowledge graph of all the topics covered in m81s content
 thus far. It is organized as a topic tree. Add to the tree when necessary,
-if/when an automation requisites the addition of new topics to the tree. 
+if/when an automation requisites the addition of new topics to the tree. Be 
+sure to include this into your response, as seperate JSON:
+<!-- TODO: Write a method for adding to our topic trees -->
+```JSON
+{
+    ""
+}
+```
 
 #### Graph
 > ![NOTE]
