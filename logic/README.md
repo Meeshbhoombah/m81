@@ -135,7 +135,7 @@ All Subtopics of a Topic
 <!-- TODO: file -->
 - Research a topic, comprehensively find all its subtopics
 
-### akioat
+#### akioat
 All Key Ideas of a Topic
 <!-- TODO: file-->
 - Get a list of all the key ideas of a topic, comprehensively explaining the 
