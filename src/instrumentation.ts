@@ -1,21 +1,16 @@
-import { TEST } from "@/engine";
-import * as fs from "fs/promises";
+// src/instrumentation.ts
+
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+
+import { Engine } from "@/engine";
 
 export async function register() {
-  let rawEngineLogic: string;
-  try {
-    const engineLogicLocation = "./logic";
-    rawEngineLogic = await fs.readFile(engineLogicLocation + "/README.md", {
-      encoding: "utf8",
-    });
+  const logicPath = join(process.cwd(), "logic", "README.md");
 
-    globalThis.engineText = rawEngineLogic;
-    globalThis.testText = TEST;
-  } catch (error: any) {
-    console.error("Error reading file:", error);
-  }
+  const rawEngineLogic = await readFile(logicPath, "utf8");
 
-  /*
-  const engine = Engine();
-  */
+  const engine = await Engine.create(rawEngineLogic);
+
+  console.log(engine.getLogic());
 }
