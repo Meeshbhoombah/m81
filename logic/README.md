@@ -118,18 +118,6 @@ This is the initial stage of the funnel, it is where
 
 ## Automations
 ### Processes
-#### wlpg
-Weekly LinkedIn Post Generation
-<!-- TODO: file -->
-> ![IMPORTANT]
-> Runs every Sunday
-
-#### dxpg
-Daily X Post Generation
-<!-- TODO: file -->
-> ![IMPORTANT]
-> Runs every day
-
 #### asoat
 All Subtopics of a Topic
 <!-- TODO: file -->
@@ -156,7 +144,7 @@ Topic Thread Generation for X
 - Generate a styled X thread
 
 ## Upgrading
-These are the upgrades you can make to the enginer. If you think an upgrade is
+These are the upgrades you can make to the engine. If you think an upgrade is
 necessary, include it in your response. You may only use the following, 
 restrict your system to only the upgrades you can make:
 
