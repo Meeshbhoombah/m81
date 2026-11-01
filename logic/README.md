@@ -34,26 +34,26 @@
         </SWITCH>
         <SWITCH ="funnel">
         "funnel": {
-            "full": <Brand/Marketing/Funnel/README.md>
+            "full": <logic/Funnel/README.md>
             <SWITCH = "stage"
             "stage": {
                 <Awareness>
-                "Awareness": <Brand/Marketing/Funnel/Awareness/README.md>
+                "Awareness": "" 
                 </Awareness>
                 <Interest> 
-                "Interest": <Brand/Marketing/Funnel/Interest/README.md>
+                "Interest": "" 
                 </Interest>
                 <Consideration>
-                "Consideration": <Brand/Marketing/Funnel/Consideration/README.md>
+                "Consideration": "" 
                 </Consideration>
                 <Conversion>
-                "Conversion: <Brand/Marketing/Funnel/Conversion/README.md>
+                "Conversion: "" 
                 </Conversion>
                 <Retention>
-                "Retention": <Brand/Marketing/Funnel/Retention/README.md>
+                "Retention": "" 
                 </Retention>
                 <Advocacy>
-                "Advocacy": <Brand/Marketing/Funnel/Advocacy/README.md>
+                "Advocacy": "" 
                 </Advocacy>
             },
             <SWITCH = "stage">
