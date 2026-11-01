@@ -7,21 +7,172 @@ import { isAbsolute, relative, resolve, sep } from "node:path";
 
 const FILE_REFERENCE = /<([^<>]*?\.md)(?:\/(#{1,6}[^<>/\r\n]*))?>/g;
 
+type SectionField = "instructions" | "about";
+
+type InstructionNode = {
+  instructions?: string;
+  about?: string;
+  [key: string]: InstructionNode | string | undefined;
+};
+
+type MarkdownSection = {
+  level: number;
+  path: string[];
+  node: InstructionNode;
+  lines: string[];
+  field: SectionField;
+};
+
 export class Engine {
   private constructor(
     private readonly logic: string,
+    private readonly instructions: InstructionNode,
   ) {}
 
   public static async create(
     rawEngineLogic: string,
     rootDirectory: string = process.cwd(),
   ): Promise<Engine> {
-    const logic = await Engine.expandReferences(
-      rawEngineLogic,
-      resolve(rootDirectory),
-    );
+    const instructions = Engine.extractInstructions(rawEngineLogic);
 
-    return new Engine(logic);
+    const logic = await Engine.expandReferences(rawEngineLogic, resolve(rootDirectory));
+
+    return new Engine(logic, instructions);
+  }
+
+  private static extractInstructions(markdown: string): InstructionNode {
+    const root: InstructionNode = {};
+    const stack: MarkdownSection[] = [];
+
+    let insideCodeBlock = false;
+    let codeFence = "";
+    let codeFenceLength = 0;
+
+    const lines = markdown.split(/\r?\n/);
+
+    for (const line of lines) {
+      const fenceMatch = line.match(/^\s*(`{3,}|~{3,})/);
+
+      if (fenceMatch) {
+        const fence = fenceMatch[1];
+
+        if (!insideCodeBlock) {
+          insideCodeBlock = true;
+          codeFence = fence[0];
+          codeFenceLength = fence.length;
+        } else if (fence[0] === codeFence && fence.length >= codeFenceLength) {
+          insideCodeBlock = false;
+          codeFence = "";
+          codeFenceLength = 0;
+        }
+
+        continue;
+      }
+
+      if (insideCodeBlock) {
+        continue;
+      }
+
+      const headingMatch = line.match(/^(#{1,6})\s+(.+?)\s*#*\s*$/);
+
+      if (headingMatch) {
+        const level = headingMatch[1].length;
+        const title = headingMatch[2].trim();
+
+        while (stack.length > 0 && stack[stack.length - 1].level >= level) {
+          const section = stack.pop();
+
+          if (section) {
+            Engine.saveInstructions(section);
+          }
+        }
+
+        // Treat the document title as the root.
+        if (level === 1 && title.toLowerCase() === "logic") {
+          continue;
+        }
+
+        const parent = stack.length > 0 ? stack[stack.length - 1].node : root;
+
+        const parentPath = stack.length > 0 ? stack[stack.length - 1].path : [];
+
+        const key = Engine.normalizeKey(title);
+        const path = [...parentPath, key];
+
+        const existing = parent[key];
+
+        if (typeof existing === "string") {
+          throw new Error(`Instruction key conflicts with a string: ${key}`);
+        }
+
+        const field = Engine.getSectionField(path);
+
+        // Insert the descriptive field first.
+        const node: InstructionNode = existing ?? {
+          [field]: "",
+        };
+
+        if (!existing) {
+          parent[key] = node;
+        } else if (!(field in node)) {
+          node[field] = "";
+        }
+
+        stack.push({
+          level,
+          path,
+          node,
+          lines: [],
+          field,
+        });
+
+        continue;
+      }
+
+      if (stack.length === 0) {
+        continue;
+      }
+
+      // Blockquotes are notes/references, not instructions.
+      if (/^\s*>/.test(line)) {
+        continue;
+      }
+
+      stack[stack.length - 1].lines.push(line);
+    }
+
+    while (stack.length > 0) {
+      const section = stack.pop();
+
+      if (section) {
+        Engine.saveInstructions(section);
+      }
+    }
+
+    return root;
+  }
+
+  private static getSectionField(path: string[]): SectionField {
+    return path[0] === "automations" ? "about" : "instructions";
+  }
+
+  private static saveInstructions(section: MarkdownSection): void {
+    const content = section.lines.join("\n").trim();
+
+    if (content.length === 0) {
+      delete section.node[section.field];
+      return;
+    }
+
+    section.node[section.field] = content;
+  }
+
+  private static normalizeKey(title: string): string {
+    return title
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
   }
 
   private static async expandReferences(
@@ -52,15 +203,11 @@ export class Engine {
         pathFromRoot.startsWith(`..${sep}`) ||
         isAbsolute(pathFromRoot)
       ) {
-        throw new Error(
-          `File reference escapes project root: ${relativePath}`,
-        );
+        throw new Error(`File reference escapes project root: ${relativePath}`);
       }
 
       if (referenceStack.includes(filePath)) {
-        throw new Error(
-          `Circular file reference detected: ${relativePath}`,
-        );
+        throw new Error(`Circular file reference detected: ${relativePath}`);
       }
 
       let fileContents: string;
@@ -80,16 +227,15 @@ export class Engine {
       }
 
       // Resolve references inside the included file.
-      const expandedContents = await Engine.expandReferences(
-        fileContents,
-        rootDirectory,
-        [...referenceStack, filePath],
-      );
+      const expandedContents = await Engine.expandReferences(fileContents, rootDirectory, [
+        ...referenceStack,
+        filePath,
+      ]);
 
       // Determine whether the reference is already inside a string.
       const insideString = Engine.isInsideString(text, index);
 
-      // Escape the contents so they can safely exist inside a string.
+      // Escape contents so they can safely exist inside a string.
       const escapedContents = insideString
         ? JSON.stringify(expandedContents).slice(1, -1)
         : JSON.stringify(expandedContents);
@@ -128,20 +274,14 @@ export class Engine {
     return insideString;
   }
 
-  private static extractHeading(
-    markdown: string,
-    headingReference: string,
-  ): string {
+  private static extractHeading(markdown: string, headingReference: string): string {
     const requestedLevel = headingReference.match(/^#+/)?.[0].length;
 
     if (!requestedLevel) {
       throw new Error(`Invalid heading reference: ${headingReference}`);
     }
 
-    const requestedTitle = headingReference
-      .slice(requestedLevel)
-      .trim()
-      .toLowerCase();
+    const requestedTitle = headingReference.slice(requestedLevel).trim().toLowerCase();
 
     const lines = markdown.split(/\r?\n/);
     const headingPattern = /^(#{1,6})\s+(.+?)\s*#*\s*$/;
@@ -150,8 +290,7 @@ export class Engine {
       const match = line.match(headingPattern);
 
       return (
-        match?.[1].length === requestedLevel &&
-        match[2].trim().toLowerCase() === requestedTitle
+        match?.[1].length === requestedLevel && match[2].trim().toLowerCase() === requestedTitle
       );
     });
 
@@ -175,5 +314,13 @@ export class Engine {
 
   public getLogic(): string {
     return this.logic;
+  }
+
+  public getInstructions(): InstructionNode {
+    return this.instructions;
+  }
+
+  public getInstructionsJSON(): string {
+    return JSON.stringify(this.instructions, null, 4);
   }
 }

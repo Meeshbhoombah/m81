@@ -12,5 +12,5 @@ export async function register() {
 
   const engine = await Engine.create(rawEngineLogic);
 
-  console.log(engine.getLogic());
+  console.log(engine.getInstructionsJSON());
 }
